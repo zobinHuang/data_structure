@@ -4,3 +4,4 @@
 1. singly_link_list：单向链表
 2. doubly_link_list：双向链表
 3. circular_link_list：循环链表
+4. stack：顺序栈和链栈

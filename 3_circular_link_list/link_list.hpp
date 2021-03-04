@@ -2,30 +2,30 @@
 
 using namespace std;
 
-template <class DATA>
+template <class DATATYPE>
 class node{
 private:
-    DATA data;
-    node<DATA>* next;
+    DATATYPE data;
+    node<DATATYPE>* next;
 
 public:
-    node(DATA init_data):data(init_data){}
-    void set_value(DATA new_data){data = new_data;}
-    DATA get_value(){return data;}
+    node(DATATYPE init_data):data(init_data){}
+    void set_value(DATATYPE new_data){data = new_data;}
+    DATATYPE get_value(){return data;}
     void set_next(node* next_node){next = next_node;}
-    node<DATA>* get_next(){return next;}
+    node<DATATYPE>* get_next(){return next;}
 };
 
-template <class DATA>
+template <class DATATYPE>
 class link_list{
 private:
-    node<DATA>* rear = nullptr;
+    node<DATATYPE>* rear = nullptr;
     int length = 0;
-    node<DATA>* create_node(DATA data);
+    node<DATATYPE>* create_node(DATATYPE data);
 public:
-    node<DATA>* get_node(int position);
+    node<DATATYPE>* get_node(int position);
     int get_length(){return length;}
-    int insert_node(DATA data, int insert_position);
+    int insert_node(DATATYPE data, int insert_position);
     int delete_node(int delete_position);
     void print_list();
 };
@@ -37,9 +37,9 @@ public:
  * 传入列表：[data：要创建的结点的值]
  * 返回值：返回指向新结点的结点指针
  */
-template <class DATA>
-node<DATA>* link_list<DATA>::create_node(DATA data){
-    node<DATA>* new_node = new node<DATA>(data);
+template <class DATATYPE>
+node<DATATYPE>* link_list<DATATYPE>::create_node(DATATYPE data){
+    node<DATATYPE>* new_node = new node<DATATYPE>(data);
     return new_node;
 }
 
@@ -49,8 +49,8 @@ node<DATA>* link_list<DATA>::create_node(DATA data){
  * 传入列表：[position：结点位置]
  * 返回值：返回指定序号的结点指针
  */
-template <class DATA> node<DATA>* link_list<DATA>::get_node(int position){
-    node<DATA>* temp = rear;
+template <class DATATYPE> node<DATATYPE>* link_list<DATATYPE>::get_node(int position){
+    node<DATATYPE>* temp = rear;
     int counter = 0;
     while(counter < position+1){
         temp = temp->next;
@@ -68,10 +68,10 @@ template <class DATA> node<DATA>* link_list<DATA>::get_node(int position){
  * 传入列表：[data：要插入的结点的值，insert_position：要插入的位置]
  * 返回值：插入成功返回1，插入失败返回0
  */
-template <class DATA>
-int link_list<DATA>::insert_node(DATA data, int insert_position){
+template <class DATATYPE>
+int link_list<DATATYPE>::insert_node(DATATYPE data, int insert_position){
     /*创建新结点*/
-    node<DATA>* new_node = create_node(data);
+    node<DATATYPE>* new_node = create_node(data);
     if(new_node == nullptr){
         return 0;
     }
@@ -84,7 +84,7 @@ int link_list<DATA>::insert_node(DATA data, int insert_position){
     }
 
     /*遍历到插入点的前一个结点处*/
-    node<DATA>* temp = rear;
+    node<DATATYPE>* temp = rear;
     int counter = 0;
     while(counter < insert_position){
         temp = temp->get_next();
@@ -110,14 +110,14 @@ int link_list<DATA>::insert_node(DATA data, int insert_position){
  * 传入列表：[delete_position：要删除的结点位置]
  * 返回值：删除成功返回1，删除失败返回0
  */
-template <class DATA>
-int link_list<DATA>::delete_node(int delete_position){
+template <class DATATYPE>
+int link_list<DATATYPE>::delete_node(int delete_position){
     if(length == 0){
         return 0;
     }
 
     /*遍历到插入点的前一个结点处*/
-    node<DATA>* temp = rear;
+    node<DATATYPE>* temp = rear;
     int counter = 0;
     while(counter < delete_position){
         temp = temp->get_next();
@@ -128,7 +128,7 @@ int link_list<DATA>::delete_node(int delete_position){
     }
 
     /*删除*/
-    node<DATA>* d_temp = temp->get_next();
+    node<DATATYPE>* d_temp = temp->get_next();
     temp->set_next(temp->get_next()->get_next());
     free(d_temp);
     if(delete_position == length-1){
@@ -145,9 +145,9 @@ int link_list<DATA>::delete_node(int delete_position){
  * 传入列表：[无]
  * 返回值：无
  */
-template <class DATA>
-void link_list<DATA>::print_list(){
-    node<DATA>* temp = rear->get_next();
+template <class DATATYPE>
+void link_list<DATATYPE>::print_list(){
+    node<DATATYPE>* temp = rear->get_next();
     for(int i=0; i<length; i++){
         cout << temp->get_value() << " ";
         temp = temp->get_next();

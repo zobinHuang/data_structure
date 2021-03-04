@@ -15,9 +15,9 @@ int main(){
     link_list.print_list();
     cout << "Finished insert 10 nodes to link list" << endl;
 
+    cout << "Test deleting node:" << endl;
     while(1){
         int delete_position = 0;
-        cout << "Test delete node" << endl;
         cout << "input the position of delete node (start from 0, type -1 to quit):";
         cin >> delete_position;
         if(delete_position == -1)break;
