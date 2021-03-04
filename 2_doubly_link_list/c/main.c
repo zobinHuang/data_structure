@@ -1,11 +1,11 @@
 #include "link_list.h"
 
-/*assume data_type is int, data_type is defined in link_list.h*/
+/*假设结点数据类型是int, data_type 定义在 link_list.h 中*/
 int main()
 {
     list_type list = {.length = 0, .head = NULL, .tail = NULL};
 
-    /*create a init link list*/
+    /*创建一个链表*/
     printf("init link list:\n");
     for(int i=0; i< 10; i++){
         data_type data = i;
@@ -19,7 +19,7 @@ int main()
     }
     print_list(&list);
 
-    /*test insert*/
+    /*测试插入*/
     printf("insert test: \n");
     while(1){
         int insert_position = 0;
@@ -40,7 +40,7 @@ int main()
         else printf("error!\n");
     }
 
-    /*delete test*/
+    /*测试删除*/
     printf("delete test: \n");
     while(1){
         int delete_position = 0;

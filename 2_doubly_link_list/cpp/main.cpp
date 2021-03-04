@@ -2,12 +2,12 @@
 
 using namespace std;
 
-/*assume data_type is int, data_type is defined in link_list.h*/
+/*假设结点数据类型是int, data_type 定义在 link_list.h 中*/
 int main()
 {
     link_list list;
     
-    /*create a init link list*/
+    /*创建一个链表*/
     for(int i=0; i<10; i++){
         if(!list.insert_node(i, list.get_length())){
             cout << "failed to create node at " << i << endl;
@@ -16,7 +16,7 @@ int main()
     }
     list.print_list();
 
-    /*insert test*/
+    /*测试插入*/
     cout << "insert test" << endl;
     while(1){
         int insert_position = 0;
@@ -29,7 +29,7 @@ int main()
         else cout << "error!" << endl;
     }
 
-    /*delete test*/
+    /*测试删除*/
     cout << "delete test" << endl;
     while(1){
         int delete_position = 0;

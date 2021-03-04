@@ -1,7 +1,9 @@
 #include <iostream>
 
+/*数据类型*/
 typedef int data_type;
 
+/*类：结点*/
 class node{
     data_type data = 0;
     node* prior = NULL;
@@ -16,6 +18,7 @@ public:
     node* get_next(){return next;}
 };
 
+/*类：链表*/
 class link_list{
     node* head = NULL;
     node* tail = NULL;
